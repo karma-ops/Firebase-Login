@@ -99,7 +99,7 @@ class _RegisterState extends State<Register> {
                           dynamic result = await _auth.registerWithEmailAndPass(
                               email, password);
                           if (result == null) {
-                            if (this.mounted) {
+                            if (mounted) {
                               setState(() {
                                 error = "Registration failed!";
                                 loading = false;

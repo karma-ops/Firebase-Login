@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 var inputDecoration = InputDecoration(
+    errorStyle: TextStyle(color: Colors.red.shade400),
     hintStyle: const TextStyle(color: Colors.white),
     hintText: 'Password',
     enabledBorder: OutlineInputBorder(

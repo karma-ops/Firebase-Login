@@ -1,6 +1,8 @@
 import 'package:firebase_login/models/user.dart';
+import 'package:firebase_login/models/user_info.dart';
 import 'package:firebase_login/screens/wrapper.dart';
 import 'package:firebase_login/services/auth.dart';
+import 'package:firebase_login/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -20,9 +22,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         StreamProvider<CustomUser?>.value(
-            catchError: (_, __) => null,
-            initialData: CustomUser(uid: 'Null'),
-            value: AuthService().user)
+          catchError: (_, __) => null,
+          initialData: CustomUser(uid: 'Null'),
+          value: AuthService().user,
+        ),
+        StreamProvider<List<UserInfo>?>.value(
+          initialData: null,
+          value: DatabaseService().info,
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

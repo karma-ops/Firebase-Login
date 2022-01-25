@@ -97,7 +97,7 @@ class _SignInState extends State<SignIn> {
                           if (result == null) {
                             setState(() {
                               error =
-                                  "Sign in failed. Please try entering valid email and password";
+                                  "Sign in failed. Please try entering valid email and password!";
                               loading = false;
                             });
                           }
@@ -120,9 +120,16 @@ class _SignInState extends State<SignIn> {
                     ),
                     const SizedBox(height: 15),
                     error != ''
-                        ? Text(error,
-                            style: const TextStyle(
-                                color: Colors.red, fontSize: 14))
+                        ? Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(error,
+                                style: TextStyle(
+                                    color: Colors.red.shade400, fontSize: 14)),
+                          )
                         : const SizedBox()
                   ],
                 ),
