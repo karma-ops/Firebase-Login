@@ -1,7 +1,7 @@
 class UserInfo {
+  final String? username;
   final String? name;
-  final int? age;
-  final String? address;
+  final String? email;
 
-  UserInfo({this.name, this.age, this.address});
+  UserInfo({this.username, this.name, this.email});
 }

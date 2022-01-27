@@ -5,12 +5,18 @@ import 'package:firebase_login/services/auth.dart';
 import 'package:firebase_login/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.grey.shade900,
+    statusBarColor: Colors.grey.shade900,
+    statusBarIconBrightness: Brightness.light,
+  ));
 }
 
 class MyApp extends StatelessWidget {

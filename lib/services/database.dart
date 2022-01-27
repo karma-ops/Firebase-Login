@@ -10,13 +10,13 @@ class DatabaseService {
   final CollectionReference userInfo =
       FirebaseFirestore.instance.collection('info');
 
-  Future updateUserData(String name, int age, String address) async {
+  Future updateUserData(String username, String name, String email) async {
     return await userInfo
         .doc(uid)
         .set({
+          'username': name,
           'name': name,
-          'age': age,
-          'address': address,
+          'email': email,
         })
         // ignore: avoid_print
         .then((value) => print("User Updated"))
@@ -27,9 +27,9 @@ class DatabaseService {
   List<UserInfo> _userInfoFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((data) {
       return UserInfo(
+        username: data['username'] ?? '',
         name: data['name'] ?? '',
-        age: data['age'] ?? 18,
-        address: data['address'] ?? '',
+        email: data['email'] ?? '',
       );
     }).toList();
   }
