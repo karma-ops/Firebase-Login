@@ -1,3 +1,4 @@
+import 'package:firebase_login/models/user.dart';
 import 'package:firebase_login/models/user_info.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _BuildHomeState extends State<BuildHome> {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInfo>?>(context, listen: false);
-    // print(userInfo!.docs);
+    print(userInfo);
 
     return Column(
       children: [
@@ -55,29 +56,33 @@ class _BuildHomeState extends State<BuildHome> {
           ),
         ),
         const SizedBox(height: 20),
-        ListTile(
-          title: Text('Name', style: GoogleFonts.kalam(fontSize: 24)),
-          subtitle: Text(userInfo!.first.name!,
-              style: GoogleFonts.kalam(fontSize: 16)),
-        ),
-        const Divider(
-          color: Colors.black26,
-          height: 10,
-        ),
-        ListTile(
-          title: Text('Username', style: GoogleFonts.kalam(fontSize: 24)),
-          subtitle: Text(userInfo.first.username!,
-              style: GoogleFonts.kalam(fontSize: 16)),
-        ),
-        const Divider(
-          color: Colors.black26,
-          height: 10,
-        ),
-        ListTile(
-          title: Text('Email', style: GoogleFonts.kalam(fontSize: 24)),
-          subtitle: Text(userInfo.first.email!,
-              style: GoogleFonts.kalam(fontSize: 16)),
-        ),
+        Column(
+          children: [
+            ListTile(
+              title: Text('Name', style: GoogleFonts.kalam(fontSize: 24)),
+              subtitle: Text(userInfo!.first.name!,
+                  style: GoogleFonts.kalam(fontSize: 16)),
+            ),
+            const Divider(
+              color: Colors.black26,
+              height: 10,
+            ),
+            ListTile(
+              title: Text('Username', style: GoogleFonts.kalam(fontSize: 24)),
+              subtitle: Text(userInfo.first.username!,
+                  style: GoogleFonts.kalam(fontSize: 16)),
+            ),
+            const Divider(
+              color: Colors.black26,
+              height: 10,
+            ),
+            ListTile(
+              title: Text('Email', style: GoogleFonts.kalam(fontSize: 24)),
+              subtitle: Text(userInfo.first.email!,
+                  style: GoogleFonts.kalam(fontSize: 16)),
+            ),
+          ],
+        )
       ],
     );
   }

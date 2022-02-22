@@ -1,4 +1,5 @@
 import 'package:firebase_login/models/user.dart';
+import 'package:firebase_login/models/user_info.dart';
 import 'package:firebase_login/screens/authenticate.dart';
 import 'package:firebase_login/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = context.watch<CustomUser?>();
     //return home or authenticate
-    if (user?.uid == null) {
+    if (user?.uid == null || user?.uid == 'Null') {
       return const Authenticate();
     } else {
       return const Home();

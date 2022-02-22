@@ -35,6 +35,6 @@ class DatabaseService {
   }
 
   Stream<List<UserInfo>> get info {
-    return userInfo.snapshots().map((_userInfoFromSnapshot));
+    return userInfo.snapshots().map(_userInfoFromSnapshot);
   }
 }
