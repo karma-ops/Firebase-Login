@@ -1,6 +1,6 @@
-import 'package:firebase_login/models/user.dart';
 import 'package:firebase_login/models/user_info.dart';
 import 'package:firebase_login/services/auth.dart';
+import 'package:firebase_login/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/linecons_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +18,10 @@ class _BuildHomeState extends State<BuildHome> {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInfo>?>(context, listen: false);
-    print(userInfo);
+    // print(userInfo);
+    DatabaseService info = DatabaseService();
+    final userInfoNew = info.getUser();
+    print(userInfoNew);
 
     return Column(
       children: [
@@ -60,8 +63,8 @@ class _BuildHomeState extends State<BuildHome> {
           children: [
             ListTile(
               title: Text('Name', style: GoogleFonts.kalam(fontSize: 24)),
-              subtitle: Text(userInfo!.first.name!,
-                  style: GoogleFonts.kalam(fontSize: 16)),
+              subtitle:
+                  Text('User One', style: GoogleFonts.kalam(fontSize: 16)),
             ),
             const Divider(
               color: Colors.black26,
@@ -69,8 +72,7 @@ class _BuildHomeState extends State<BuildHome> {
             ),
             ListTile(
               title: Text('Username', style: GoogleFonts.kalam(fontSize: 24)),
-              subtitle: Text(userInfo.first.username!,
-                  style: GoogleFonts.kalam(fontSize: 16)),
+              subtitle: Text('userone', style: GoogleFonts.kalam(fontSize: 16)),
             ),
             const Divider(
               color: Colors.black26,
@@ -78,7 +80,7 @@ class _BuildHomeState extends State<BuildHome> {
             ),
             ListTile(
               title: Text('Email', style: GoogleFonts.kalam(fontSize: 24)),
-              subtitle: Text(userInfo.first.email!,
+              subtitle: Text('userone@example.com',
                   style: GoogleFonts.kalam(fontSize: 16)),
             ),
           ],

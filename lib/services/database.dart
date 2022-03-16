@@ -37,4 +37,9 @@ class DatabaseService {
   Stream<List<UserInfo>> get info {
     return userInfo.snapshots().map(_userInfoFromSnapshot);
   }
+
+  getUser() {
+    var info = userInfo.doc(uid);
+    return info;
+  }
 }
